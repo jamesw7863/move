@@ -1,36 +1,146 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MOVE
+
+**MOVE** is a real-time computer vision movement game built with Next.js and MediaPipe Pose. The game uses a player’s webcam to track body movement, detect poses, and control gameplay through physical motion instead of a keyboard or controller.
+
+MOVE was built during **ShellHacks 2025** as an interactive fitness-inspired web game combining computer vision, browser-based performance, and responsive game logic.
+
+## Overview
+
+MOVE turns a webcam into a motion controller. Players move their body to avoid hazards, trigger actions, and score points in a fast-paced 3x3 grid game. The project explores how pose estimation can make web games more active, accessible, and engaging.
+
+The system uses real-time pose tracking to detect player position and movement, then translates that data into game interactions with low-latency feedback.
+
+## Features
+
+* Real-time body tracking using **MediaPipe Pose**
+* Webcam-based motion controls
+* 3x3 hazard-dodging game layout
+* Collision detection and scoring system
+* Pause behavior when the player leaves the camera frame
+* Persistent high-score storage
+* Responsive UI for different screen sizes
+* Browser-based gameplay with no external hardware required
+
+## Tech Stack
+
+* **Framework:** Next.js
+* **Language:** TypeScript
+* **Styling:** Tailwind CSS
+* **Computer Vision:** MediaPipe Pose
+* **Machine Learning:** TensorFlow
+* **Graphics/Performance:** WebGPU, WebGL
+* **Deployment:** Vercel
+
+## How It Works
+
+1. **Webcam input**
+
+   * The app accesses the user’s webcam through the browser.
+
+2. **Pose detection**
+
+   * MediaPipe Pose estimates body landmarks in real time.
+
+3. **Movement mapping**
+
+   * Player position is mapped onto a 3x3 game grid.
+
+4. **Game logic**
+
+   * The app checks for collisions, updates score, and manages game state.
+
+5. **Frame handling**
+
+   * If the player leaves the camera frame, the game pauses to prevent unfair collisions.
+
+6. **Score tracking**
+
+   * High scores are saved locally so players can track their best runs.
+
+## Performance Goals
+
+MOVE was designed to support smooth real-time interaction directly in the browser.
+
+* Tracks player movement at up to **60 FPS**
+* Maintains low-latency input response under approximately **80ms**
+* Tested by **40+ users** during ShellHacks 2025
 
 ## Getting Started
 
-First, run the development server:
+This section is for developers who want to run the project locally.
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+```bash
+Node.js
+npm
+```
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY_NAME.git
+```
+
+Navigate into the project directory:
+
+```bash
+cd YOUR_REPOSITORY_NAME
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open the app in your browser:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
 
-## Learn More
+```bash
+app/
+  page.tsx
+  layout.tsx
 
-To learn more about Next.js, take a look at the following resources:
+components/
+  # Game UI and reusable interface components
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+lib/
+  # Utility functions and game logic
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+public/
+  # Static assets
+```
 
-## Deploy on Vercel
+## Future Improvements
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* Add multiple difficulty levels
+* Add multiplayer or challenge modes
+* Improve calibration for different camera angles
+* Add more detailed motion analytics
+* Add sound effects and animations
+* Add leaderboard support
+* Improve accessibility for different mobility ranges
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Inspiration
+
+MOVE was inspired by the idea that games can encourage physical activity while still being lightweight and accessible through a normal browser. Instead of requiring a console, controller, or VR headset, MOVE uses computer vision to make movement-based gameplay available with only a webcam.
+
+## Author
+
+Built by Diego Oberto, Devon Trenoskie, Hector Cordero, and James Williams during ShellHacks 2025.
